@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+BLUE='\033[1;36m'
+RESET='\033[0m'
+
+clear
+printf '%s' "$BLUE"
+echo "===================================="
+echo "       RicOS Installer 1.0"
+echo "===================================="
+printf '%s\n' "$RESET"
+
+echo "Bienvenue dans l'installateur RicOS !"
+echo
+
+read -r -p "Langue [fr_FR.UTF-8] : " LANGUE
+LANGUE=${LANGUE:-fr_FR.UTF-8}
+
+read -r -p "Clavier [fr] : " CLAVIER
+CLAVIER=${CLAVIER:-fr}
+
+read -r -p "Fuseau horaire [Europe/Paris] : " FUSEAU
+FUSEAU=${FUSEAU:-Europe/Paris}
+
+echo
+echo "=== Connexion Internet ==="
+
+if command -v nmtui >/dev/null 2>&1; then
+    read -r -p "Configurer le Wi-Fi ? [o/N] : " WIFI
+    if [[ "$WIFI" == "o" || "$WIFI" == "O" ]]; then
+        nmtui
+    fi
+else
+    echo "nmtui n'est pas disponible."
+fi
+
+echo
+echo "=== Compte utilisateur ==="
+
+while true; do
+    read -r -p "Nom d'utilisateur : " UTILISATEUR
+    if [[ "$UTILISATEUR" =~ ^[a-z_][a-z0-9_-]*$ ]]; then
+        break
+    fi
+    echo "Utilise des lettres minuscules, chiffres, _ ou -."
+done
+
+echo
+echo "Le mot de passe sera demandé lors de l'installation réelle."
+echo "Aucun mot de passe n'est enregistré dans cette démonstration."
+
+echo
+echo "=== Disques détectés ==="
+lsblk -d -o NAME,SIZE,MODEL,TRAN
+
+echo
+echo "===================================="
+echo "    Récapitulatif RicOS"
+echo "===================================="
+echo "Langue       : $LANGUE"
+echo "Clavier      : $CLAVIER"
+echo "Fuseau       : $FUSEAU"
+echo "Utilisateur  : $UTILISATEUR"
+echo
+
+echo "MODE TEST : aucun disque ne sera modifié."
+echo "L'installation réelle n'est pas encore activée."
+echo
+
+read -r -p "Appuie sur Entrée pour quitter..."

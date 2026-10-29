@@ -1,0 +1,16 @@
+title-text: "RicOS 1.0"
+title-color: "#55d8ff"
+desktop-color: "#0e1624"
+
++ boot_menu {
+    left = 25%
+    top = 30%
+    width = 50%
+    height = 55%
+
+    item_height = 48
+    item_spacing = 12
+
+    item_color = "#dce5f0"
+    selected_item_color = "#55d8ff"
+}

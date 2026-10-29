@@ -1,0 +1,12 @@
+# Résultats de build Nix
+result
+result-*
+
+# Images disque / ISO générées (à publier via les « Releases », pas dans git)
+*.qcow2
+*.iso
+*.img
+
+# Divers
+*.swp
+.direnv/

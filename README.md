@@ -9,7 +9,7 @@
 | Élément | Description |
 |---|---|
 | **ISO live RicOS** | ISO minimale NixOS avec identité RicOS (nom, logo fastfetch, thème GRUB, message d'accueil) |
-| **`ricos-install`** | Pas d'installateur pour le moment (la commande affiche seulement un message) |
+| **`ricos-install`** | Pas d'installateur pour le moment |
 | **LFS-Nix** (`.#lfs`) | Variante « Linux From Scratch » : NixOS compilé depuis les sources, sans cache binaire |
 
 ## Prérequis
